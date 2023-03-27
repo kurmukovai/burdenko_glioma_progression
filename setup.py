@@ -2,7 +2,7 @@ from pathlib import Path
 
 from setuptools import setup, find_packages
 
-name = 'burdenko_mri'
+name = 'burdenko_glioma'
 
 with open('requirements.txt', encoding='utf-8') as file:
     requirements = file.read().splitlines()
@@ -10,7 +10,7 @@ with open('requirements.txt', encoding='utf-8') as file:
 setup(
     name=name,
     packages=find_packages(include=(name,)),
-    descriprion='MRI brain segmentation project',
+    descriprion='Burdenko Radiotherapy dataset',
     install_requires=requirements,
     python_requires='>=3.7',
 )
