@@ -9,10 +9,7 @@ if __name__=="__main__":
     patient_id = sys.argv[2]
     target_folder = sys.argv[3]
     
-    # '/anvar/private_datasets/anvar_work/Burdenko-TCIA/manifest-1676999639835/Burdenko-GBM-Progression'
-    # 'Burdenko-GBM-001'
-    # '/home/anvar/home_directory/burdenko_001'
-    
+   
     for subfolder in os.listdir(Path(root) / patient_id):
         if 'Radiotherapy planning' in subfolder:
             baseline_visit = subfolder
@@ -20,5 +17,6 @@ if __name__=="__main__":
     source_folder = Path(root) / patient_id / baseline_visit
     rt_folders = ['RTSTRUCT', 'RTPLAN', 'RTDOSE']
     for subfolder in source_folder.glob('*'):
-        if not any([stop in subfolder.name for stop in rt_folders]):
-            dicom_to_nifti(subfolder, Path(target_folder), name=subfolder.name)
+        if subfolder.name in rt_folders:
+            continue
+        dicom_to_nifti(subfolder, Path(target_folder), name=subfolder.name)
